@@ -6,6 +6,8 @@ Lotus::Model.migration do
       column :url, String,  null: false
       column :description, :text,  null: false
       column :published, :boolean,  default: false, null: false
+      column :created_at, :datetime
+      column :updated_at, :datetime
     end
   end
 end
