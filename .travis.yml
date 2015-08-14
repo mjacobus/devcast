@@ -12,7 +12,7 @@ env:
   # - DB=postgresql
 
 script:
-  - RAILS_ENV=test bundle exec rake db:migrate --trace
+  - LOTUS_ENV=test bundle exec lotus db migrate
   - TRAVIS=true bundle exec rspec
 
 # gemfile:
