@@ -18,11 +18,6 @@ TBD
 - [Next features](https://github.com/mjacobus/devcast/issues?labels=enhancement&page=1&state=open)
 - [Issues](https://github.com/mjacobus/devcast/issues?state=open)
 
-## Authors
-
-- [Marcelo Jacobus](https://github.com/mjacobus)
-
-
 ## Contributing
 
 1. Fork it
@@ -33,4 +28,12 @@ TBD
 
 ** Do not forget to write tests**
 
-## Running tests
+### Running tests
+
+```bash
+bundle exec rspec
+```
+
+## Authors
+
+- [Marcelo Jacobus](https://github.com/mjacobus)
