@@ -1,0 +1,27 @@
+language: ruby
+rvm:
+  - 1.9.3
+  - 2.0.0
+  - 2.1.0
+  - 2.1.1
+  - 2.2
+
+env:
+  - DB=sqlite
+  - DB=mysql
+  - DB=postgresql
+
+script:
+  - RAILS_ENV=test bundle exec rake db:migrate --trace
+  - TRAVIS=true bundle exec rspec
+
+# gemfile:
+#   - gemfiles/Gemfile.rails-4.1.x
+#   - gemfiles/Gemfile.rails-4.2.x
+#   - Gemfile
+
+before_script:
+  - mysql -e 'create database devcast_test'
+  - psql -c 'create database devcast_test' -U postgres
+
+sudo: false
