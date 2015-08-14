@@ -41,6 +41,7 @@ Lotus::Model.configure do
 
       attribute :id,   Integer
       attribute :title, String
+      attribute :url, String
       attribute :description, String
       attribute :published, Boolean
       attribute :created_at, DateTime
