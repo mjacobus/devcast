@@ -3,11 +3,17 @@ ENV['LOTUS_ENV'] ||= 'test'
 
 if ENV['TRAVIS']
   require 'coveralls'
-  Coveralls.wear!('rails')
+  Coveralls.wear!
 end
 
 require 'simplecov'
-SimpleCov.start
+
+SimpleCov.start do
+  add_filter "/spec/"
+  add_group "Devcast", "lib/devcast"
+  add_group "Controllers", "apps/web/controllers"
+  add_group "Views", "apps/web/views"
+end
 
 require_relative '../config/environment'
 Lotus::Application.preload!
