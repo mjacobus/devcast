@@ -1,6 +1,14 @@
 # Require this file for unit tests
 ENV['LOTUS_ENV'] ||= 'test'
 
+if ENV['TRAVIS']
+  require 'coveralls'
+  Coveralls.wear!('rails')
+end
+
+require 'simplecov'
+SimpleCov.start
+
 require_relative '../config/environment'
 Lotus::Application.preload!
 
@@ -97,4 +105,3 @@ RSpec.configure do |config|
   Kernel.srand config.seed
 =end
 end
-
