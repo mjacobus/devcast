@@ -31,7 +31,7 @@ TBD
 ### Running tests
 
 ```bash
-bundle exec rspec
+bundle exec rake test
 ```
 
 ## Authors
