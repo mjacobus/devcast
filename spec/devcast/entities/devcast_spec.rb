@@ -1,6 +1,16 @@
 require 'spec_helper'
 
-RSpec.describe Devcast do
+require 'support/spec_helper/entity/devcast'
+require 'support/has_attribute'
+require 'support/is_published'
+require 'support/attribute_value'
+
+describe Devcast do
+  extend SpecHelper::HasAttribute
+  extend SpecHelper::IsPublished
+  include SpecHelper::AttributeValue
+
+  let(:subject) { Devcast.new }
   let(:attributes) { SpecHelper::Entities::Devcast.new.valid_attributes }
 
   it_has_attribute(:id)
@@ -13,25 +23,25 @@ RSpec.describe Devcast do
 
   describe "published" do
     it 'has default published value of false' do
-      expect(subject.published).to be false
+      Devcast.new.published.must_equal false
     end
 
     specify "#published can be changed on the constructor" do
       subject = Devcast.new(published: true)
-      expect(subject.published).to be true
+      subject.published.must_equal true
     end
 
-    is_published('1', true)
-    is_published(1, true)
-    is_published(true, true)
-    is_published('0', false)
-    is_published(0, false)
-    is_published(false, false)
+    is_published('1', true, Devcast)
+    is_published(1, true, Devcast)
+    is_published(true, true, Devcast)
+    is_published('0', false, Devcast)
+    is_published(0, false, Devcast)
+    is_published(false, false, Devcast)
   end
 
   describe "initializer" do
     subject do
-      described_class.new(attributes)
+      Devcast.new(attributes)
     end
 
     it "initialize all given values" do

@@ -10,7 +10,7 @@ gem 'lotus-model',   '~> 0.4'
 gem 'mysql'
 
 group :test do
-  gem 'rspec'
+  gem 'minitest'
   gem 'capybara'
   gem 'coveralls'
   gem 'simplecov'

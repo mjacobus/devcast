@@ -13,7 +13,7 @@ env:
 
 script:
   - LOTUS_ENV=test bundle exec lotus db migrate
-  - TRAVIS=true bundle exec rspec
+  - bundle exec test:coveralls
 
 # gemfile:
 #   - gemfiles/Gemfile.rails-4.1.x

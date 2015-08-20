@@ -1,7 +1,15 @@
 require 'spec_helper'
 
-RSpec.describe DevcastRepository do
-  subject {described_class}
+require 'support/spec_helper/entity/devcast'
+require 'support/has_attribute'
+require 'support/is_published'
+require 'support/attribute_value'
+
+describe DevcastRepository do
+  extend SpecHelper::HasAttribute
+  extend SpecHelper::IsPublished
+
+  subject { DevcastRepository }
 
   before do
     subject.all.each do |model|
@@ -16,30 +24,31 @@ RSpec.describe DevcastRepository do
   describe ".persist" do
     it 'creates a new record' do
       persist
-      expect(subject.all.count).to be(1)
+      subject.all.count.must_equal 1
     end
 
     it 'updates an existing record' do
       persist
       persist
-      expect(subject.all.count).to be(1)
+      subject.all.count.must_equal 1
     end
 
     it 'saves the correct data' do
       persist
       persisted = subject.all.last
-      # expect(persisted).to eq(entity)
       attributes.each do |attr, value|
-        expect(persisted.send(attr)).to eq(value)
+        persisted.send(attr).must_equal value
       end
     end
 
-    xit 'adds created at when creates a record' do
-      expect(entity.created_at).to eq(DateTime.now)
+    it 'adds created at when creates a record' do
+      skip
+      entity.created_at.must_equal(DateTime.now)
     end
 
-    xit 'updates updated at when updates a record' do
-      expect(entity.created_at).to eq(DateTime.now)
+    it 'updates updated at when updates a record' do
+      skip
+      entity.updated_at.must_equal(DateTime.now)
     end
   end
 
@@ -47,7 +56,7 @@ RSpec.describe DevcastRepository do
     it 'removes a record' do
       persist
       subject.delete(subject.all.last)
-      expect(subject.all.count).to be(0)
+      subject.all.count.must_equal 0
     end
   end
 end
