@@ -15,10 +15,8 @@ script:
   - LOTUS_ENV=test bundle exec lotus db migrate
   - bundle exec test:coveralls
 
-# gemfile:
-#   - gemfiles/Gemfile.rails-4.1.x
-#   - gemfiles/Gemfile.rails-4.2.x
-#   - Gemfile
+gemfile:
+  - Gemfile
 
 before_script:
   - mysql -e 'create database devcast_test'
